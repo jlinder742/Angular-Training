@@ -1,10 +1,17 @@
 <label> Server name </label>
 <input type ="text" class= "form-control"
  (input)="onUpdateServerName($event)">
- <p>{{serverName}}</p>
 <button class = "btn btn-primary"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()"> Add Server </button>
-<p>{{serverCreationStatus}}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- Data Binding example to display the status od the server-->
+<!-- <p>{{serverCreationStatus}}</p> -->
+<!-- example of a structural directive *ngIf= -->
+<p *ngIf="serverCreated else noServer"> Server was created, server name is {{serverName}}</p>
+<!-- # = Local reference, AKA a marker somewhere in the dom.
+    "ng template" ships with angualr and is used to mark places in the dom
+        In this case its being used as another conditional-->
+<ng-template #noServer>
+    <p> No server made bozo!</p>
+</ng-template>
+<app-server *ngFor="let server of servers"></app-server>
