@@ -1,1 +1,29 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- *ngfor is a directive representing a for loop-->
+        <!-- with this *ngfor as well I can access the recipe using string interpolation-->
+        <a href="#" 
+        class="list-group-item clearfix" 
+        *ngFor="let recipe of recipes">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+                <p class="list-group-item-text">{{ recipe.description }}</p>
+            </div>
+            <span class="pull-right">
+                <!-- Class="img responsive" automatically scales the image size!! YES-->
+                <img src="{{ recipe.imagePath}}" 
+                alt="{{recipe.name}}"  
+                class="img-responsive" 
+                style="max-height: 10rem;">
+            </span>
+        </a>
+        <app-recipe-item></app-recipe-item>
+    </div>
+</div>
 <app-recipe-item></app-recipe-item>
